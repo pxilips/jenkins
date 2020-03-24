@@ -88,7 +88,7 @@ podTemplate(cloud: 'kubernetes', containers: [
             }
                 
             stage('**Push Image**'){
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/'){
+                withDockerRegistry(credentialsId: 'DockerHubCred', url: 'https://index.docker.io/v1/'){
                     sh "docker push pxilips/myappdocker:latest"
                 }
             }
