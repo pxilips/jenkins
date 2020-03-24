@@ -83,11 +83,11 @@ podTemplate(cloud: 'kubernetes', containers: [
                 unstash 'artifactStash'
             }
 
-            stage('Build Dockerfile'){
+            stage('**Build Dockerfile**'){
                 dockerImage = docker.build("pxilips/myappdocker:latest", "--no-cache --build-arg APP_NAME=${appName} --build-arg APP_VERSION=${appVersion} .")
             }
                 
-            stage('Push Image'){
+            stage('**Push Image**'){
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/'){
                     sh "docker push pxilips/myappdocker:latest"
                 }
